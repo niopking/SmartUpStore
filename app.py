@@ -10,7 +10,7 @@ app = Flask(__name__)
 def home():
     return "Welcome to the Flask app!"
 
-zn# Route for the tourist attractions
+# Route for the tourist attractions
 @app.route('/t')
 def t():
     client = OpenAI()
