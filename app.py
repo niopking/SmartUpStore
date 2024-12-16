@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from g4f.client import Client as OpenAI
 import platform
 import asyncio
