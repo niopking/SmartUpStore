@@ -15,7 +15,7 @@ def home():
 @app.route('/t')
 def t():
     client = OpenAI()
-    prompt = request.args.get('coordinates', default="Nista", type=str)
+    prompt = request.args.get('prompt', default="Nista", type=str)
     
     response = client.chat.completions.create(
         model="gpt-4o",
