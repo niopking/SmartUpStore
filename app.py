@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from g4f.client import Client as OpenAI
+import asyncio
 
 app = Flask(__name__)
 
@@ -15,7 +16,8 @@ def t():
     prompt = request.args.get('prompt', default="Nista", type=str)
     client = OpenAI()
     
-    response = client.chat.completions.create(
+    response = await asyncio.to_thread(
+        client.chat.completions.create,
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}]
     )
