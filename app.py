@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 from g4f.client import Client as OpenAI
-import asyncio
 
 app = Flask(__name__)
 
@@ -11,16 +10,15 @@ def home():
     return coordinates
 
 # Route for the tourist attractions
-@app.route('/t')
+@app.route('/ask')
 def t():
     prompt = request.args.get('prompt', default="Nista", type=str)
     client = OpenAI()
     
-    response = await asyncio.to_thread(
-        client.chat.completions.create,
+    response = client.chat.completions.create(
         model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
-    )
+        messages=[{"role": "user", "content": prompt}])
+
     return jsonify({"response": response.choices[0].message.content})
 
 
