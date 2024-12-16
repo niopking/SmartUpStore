@@ -8,7 +8,8 @@ app = Flask(__name__)
 # Route for the homepage
 @app.route('/')
 def home():
-    return "Welcome to the Flask app!"
+    coordinates = request.args.get('coordinates', default="Nista", type=str)
+    return coordinates
 
 # Route for the tourist attractions
 @app.route('/t')
