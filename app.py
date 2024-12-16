@@ -1,8 +1,5 @@
 from flask import Flask, jsonify, request
 from g4f.client import Client as OpenAI
-import platform
-import asyncio
-import time
 
 app = Flask(__name__)
 
@@ -22,7 +19,6 @@ def t():
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}]
     )
-    time.sleep(5)
     return response.choices[0].message.content
 
 
