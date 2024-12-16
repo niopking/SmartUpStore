@@ -15,7 +15,7 @@ def home():
 @app.route('/t')
 def t():
     client = OpenAI()
-    prompt = "Give me 10 tourist attractions within a radius of 5 km from the coordinates 44°46'11.6 N 17°09'15.5 E. Print in attraction format: distance: description"
+    prompt = request.args.get('coordinates', default="Nista", type=str)
     
     response = client.chat.completions.create(
         model="gpt-4o",
