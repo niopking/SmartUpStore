@@ -14,8 +14,8 @@ def home():
 # Route for the tourist attractions
 @app.route('/t')
 def t():
-    client = OpenAI()
     prompt = request.args.get('prompt', default="Nista", type=str)
+    client = OpenAI()
     
     response = client.chat.completions.create(
         model="gpt-4o",
